@@ -12,7 +12,7 @@ const server = express();
 
 server.set('view engine', 'mustache');
 server.set('views', path.join(__dirname, 'views'));
-server.set('mustache', mustache());
+server.engine('mustache', mustache());
 
 //configuraçao da pasta publica
 
