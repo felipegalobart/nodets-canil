@@ -3,7 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mustache from "mustache-express";
 import path from "path";
-
+import mainRoutes from './routes/index';
 
 // configuraçao do template engine
 dotenv.config();
@@ -19,6 +19,13 @@ server.set('mustache', mustache());
 server.use(express.static(path.join(__dirname, '../public')));  //configuracao da pasta de arquivos estaticos
 
 //Rotas
+
+server.use(mainRoutes);
+
+// Mensagem de página não encontrada.
+server.use((req, res) => {
+  res.send('Página não encontrada!');
+})
 
 // Rodar servidor
 
